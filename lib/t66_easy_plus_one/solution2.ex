@@ -1,4 +1,4 @@
-defmodule Solution do
+defmodule Solution2 do
   @spec plus_one(digits :: [integer]) :: [integer]
   def plus_one(digits) do
      digits |> Enum.reverse() |> get_tail(1) |> Enum.reverse()

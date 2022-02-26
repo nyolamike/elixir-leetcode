@@ -1,4 +1,4 @@
-defmodule Solution do
+defmodule Solution1 do
   @spec plus_one(digits :: [integer]) :: [integer]
   def plus_one(digits) do
     digits
