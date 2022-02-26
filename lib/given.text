@@ -1,0 +1,74 @@
+Given an integer n, return true if it is a power of two. Otherwise, return false.
+
+An integer n is a power of two, if there exists an integer x such that n == 2x.
+
+ 
+
+Example 1:
+
+Input: n = 1
+Output: true
+Explanation: 20 = 1
+Example 2:
+
+Input: n = 16
+Output: true
+Explanation: 24 = 16
+Example 3:
+
+Input: n = 3
+Output: false
+ 
+
+Constraints:
+
+-231 <= n <= 231 - 1
+ 
+
+Follow up: Could you solve it without loops/recursion?
+
+
+
+defmodule Solution do
+  @spec is_power_of_two(n :: integer) :: boolean
+  def is_power_of_two(n) do
+    #get the square root
+    sr = :math.sqrt(n)
+    #if the number is a whole number then its likely to be a power of two
+    truncted = trunc(sr)                                                                   
+    truncted == sr
+  end
+end
+
+Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the range [1, n] that do not appear in nums.
+
+ defmodule Solution do
+  @spec find_disappeared_numbers(nums :: [integer]) :: [integer]
+  def find_disappeared_numbers(nums) do
+      #the length of an the list is n
+      #so we go through the list but checking for number that are below or equal to n
+      #but these numbers are not in the list
+      
+      #we need to reduce 
+      tally = {
+        %{},
+        0     
+      }
+      {checks, len} = nums |> Enum.reduce(tally, fn num, {checks, len} -> 
+         checks = if checks |> Map.has_key?(num) == false do 
+           checks |> Map.put(num,1)
+         else 
+           checks |> Map.put(num, checks[num] + 1)
+         end
+         len = len + 1  
+         {checks, len}
+      end)
+      missing = []
+      for i <- 1..len do 
+        if checks |> Map.has_key?(i) == false do 
+          missing = [i | missing]
+        end 
+      end 
+      missing
+  end
+end
