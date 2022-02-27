@@ -1,4 +1,4 @@
-defmodule Solution do
+defmodule Solution448 do
   @spec find_disappeared_numbers(nums :: [integer]) :: [integer]
   def find_disappeared_numbers(nums) do
       #the length of an the list is n
@@ -10,7 +10,7 @@ defmodule Solution do
         %{},
         0
       }
-      {checks, len} = nums |> Enum.reduce(tally, fn num, {checks, len} ->
+      {checks, _} = nums |> Enum.reduce(tally, fn num, {checks, len} ->
          len = len + 1
          checks = checks |> put_item(num) |> put_item(len,0)
          {checks, len}

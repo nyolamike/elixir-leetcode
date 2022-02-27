@@ -4,7 +4,6 @@ defmodule Solution2 do
      digits |> Enum.reverse() |> get_tail(1) |> Enum.reverse()
   end
 
-  @spec get_tail(digits::[integer], carry :: interger) :: [integer]
   def get_tail([], 0), do: []
   def get_tail([], carry), do: [carry]
   def get_tail([ head | tail ], carry) do
